@@ -101,9 +101,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       var real_msg = msg.slice(1);
       if (!real_msg.startsWith("!")) {
         if (real_msg === "명령어") {
-          replier.reply("!이름\n!생일 n\n!봉권\n!날씨 지역");
+          replier.reply("!이름\n!생일 n\n!봉권\n!날씨 지역\n!달력 n\n!달력 yymmdd <내용>\n#<명령어>\n!확률");
         } else if (real_msg === "봉권") {
           replier.reply("봉형 넘 멋져...(제발)");
+        } else if (real_msg === "확률") {
+          replier.reply("ㄹㅇㅋㅋ (0.33%)\n아 ㄹㅇ? (0.33%)\nㅇㅈㅇㅈ (0.33%)\nㄴㄴ 아님 (0.33%)\n안물 (0.33%)\n(무시) (0.33%)\n\n<봉형 전용>\n강봉권 죽어 (0.01%)\n칭찬 3개 (각 3%)\n헛소리 ㄴ (90.99%)");
         } else if (real_msg.startsWith("생일")) {
           var birth = real_msg.slice(2);
           var trimBirth = birth.trim();

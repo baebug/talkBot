@@ -50,6 +50,11 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     return scheduleList;
   }
 
+  // 미완성 기능입니다.
+  // 미완성 기능입니다.
+  // 미완성 기능입니다.
+
+
   if (msg.startsWith("달력")){ 
     if (parseInt(schedule_M) < 13 && parseInt(schedule_M) > 0) {
       searchSchedule(parseInt(schedule_M));

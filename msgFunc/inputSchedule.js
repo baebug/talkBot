@@ -27,7 +27,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       schSender = scheduleObj[key][3];
       schMsg = scheduleObj[key][4];
       if (schMM == m) {
-        scheduleList += '\n' + schYY + '년 ' + schDD + '일 ' + schMsg + '\n작성자: ' + schSender;
+        scheduleList += '\n' + schDD + '일 ' + schMsg + '\n작성자: ' + schSender;
       }
     } return scheduleList;
   }
@@ -45,7 +45,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     schDate = schedule_YMD.slice(4,6); // "DD"
     if (parseInt(schedule_M) < 13 && parseInt(schedule_M) > 0 && trimSchedule.length < 3) {
       searchSchedule(parseInt(schedule_M));
-      replier.reply(scheduleListm);
+      replier.reply(scheduleList);
     } else if (schMonth > 0 && schDate > 0 && schMonth < 13 && schDate < 32) {
       var schedule = trimSchedule.slice(6);
       var real_schedule = schedule.trim();
@@ -55,28 +55,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       replier.reply("명령어를 확인해주세요.\n!달력 mm\n!달력 yymmdd <내용>");
     }
   }
-
-
-  ```
-  !달력 YYMMDD <내용>
-  12 34 567890
-
-  getTime():[YY,MM,DD,sender,schedule],
-
-  ```
-  ```
-  !달력 M
-
-  M월 일정 안내
-  DD일 가나다라마바사
-  작성자: sender
-  ---
-  DD일 마바사아자차
-  작성자: sender
-  ---
-  DD일 차카타파하
-  작성자: sender
-  ```
 }
 
 //아래 4개의 메소드는 액티비티 화면을 수정할때 사용됩니다.
