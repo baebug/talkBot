@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  var scheduleStr = `"12345678":["21","05","17","이성영","강봉권바보"],"12345679":["21","10","21","강봉권","이성영바보"],"12345689":["21","05","17","김승수","둘 다 바보"]`
+
+  var now = new Date();
+  // var scheduleStr = DataBase.getDataBase("scheduleInfo.txt");
+  var strSchedule = "{" + scheduleStr + "}";
+  var scheduleObj = JSON.parse(strSchedule);
+  var schYY, schMM, scDD, schSender, schMsg;
+  var scheduleList = '';
+  var schedule_YMD, schedule_MM, schedule_M;
+  var schYear, schMonth, schDate;
+
+
+  function searchSchedule(m) {
+    scheduleList = m + "월 일정 안내";
+    for (key in scheduleObj) {
+      schYY = scheduleObj[key][0];
+      schMM = scheduleObj[key][1];
+      schDD = scheduleObj[key][2];
+      schSender = scheduleObj[key][3];
+      schMsg = scheduleObj[key][4];
+      if (schMM == m) {
+        scheduleList += '\n' + schDD + '일 ' + schMsg;
+      }
+    } return scheduleList;
+  }
+
+  console.log(searchSchedule(10));
+
+
+  </script>
+</body>
+</html>

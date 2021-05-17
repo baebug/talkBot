@@ -10,13 +10,12 @@ const scriptName = "misae-bot";
  */
 
 var isBong = false;
-const birthStr = DataBase.getDataBase("birthinfo.txt");
-const birthObj = JSON.parse(birthStr);
-const abuseStr = DataBase.getDataBase("abuseinfo.txt");
-const abuseArray = JSON.parse(abuseStr);
 
 function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-  var now = new Date();
+  const birthStr = DataBase.getDataBase("birthinfo.txt");
+  const birthObj = JSON.parse(birthStr);
+  const abuseStr = DataBase.getDataBase("abuseinfo.txt");
+  const abuseArray = JSON.parse(abuseStr);  var now = new Date();
   var birthList = '생일자 명단';
   var miName, month, date;
   var rowData;
