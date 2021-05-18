@@ -12,19 +12,17 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 
   const urlEncode = function(text, target, replacement) {
     var e = 0, length = text.length;
-    for (e; e < lengthl; e++) {
+    for (e; e < length; e++) {
       text = text.replace(" ", "%20");
     }
     return text;
   }
 
-  if (msg.startsWith("#")) {
-    if (msg !== "#") {
+  if (msg.startsWith("#") && msg !== "#") {
       var search_msg = msg.slice(1);
       search_msg = urlEncode(search_msg);
       var search_query = "https://www.google.com/search?q=" + search_msg;
       replier.reply(search_query);
-    }
   }
 }
 

@@ -10,24 +10,26 @@ const scriptName = "template";
  */
 
 var agree = false;
-
 function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-  var asyncAfterMin = function (callbackFunction) {
-    setTimeout(function () {
-      callbackFunction();
-    }, 30000);
-  };
+  // var asyncAfterMin = function (callbackFunction) {
+  //   setTimeout(function () {
+  //     callbackFunction();
+  //   }, 30000);
+  // };
 
-  var changeFalse = function () {
-    agree = false;
-  };
+  // var changeFalse = function () {
+  //   agree = false;
+  // };
+  function timeOut(t) {
+    setTimeout(changeFalse = () => {
+      agree = false;
+    }, t * 1000);
+  }
 
-  if (msg == "ㄴㅇㅈㄴㅇㅈ") {
-    if(agree == false){
-      agree = true;
-      replier.reply("ㄴㅇㅈㄴㅇㅈ");
-      asyncAfterMin(changeFalse);
-    }
+  if (agree == false && msg == "ㄴㅇㅈㄴㅇㅈ") {
+    agree = true;
+    replier.reply("ㄴㅇㅈㄴㅇㅈ");
+    timeOut(30);
   }
 }
 

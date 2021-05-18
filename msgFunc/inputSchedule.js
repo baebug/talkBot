@@ -15,8 +15,8 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   var scheduleObj = JSON.parse(strSchedule);
   var schYY, schMM, schDD, schSender, schMsg;
   var scheduleList = '';
-  var schedule_YMD, schedule_MM, schedule_M;
-  var schYear, schMonth, schDate;
+  var schedule_msg, schedule_M, schedule;
+  var schedule_YMD, schYear, schMonth, schDate;
 
   function searchSchedule(m) {
     scheduleList = m + "월 일정 안내";
@@ -35,21 +35,18 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
 
 
   if (real_msg.startsWith("달력")){ //  "달력(v)~~~~~"
-    var schedule_msg = real_msg.slice(2); //  "(v)YMD(v)~~~~~~" 
-    var trimSchedule = schedule_msg.trim(); //  "YMD(v)~~~~~"
-    schedule_YMD = trimSchedule.slice(0,6); //  "YYMMDD"
-    schedule_MM = trimSchedule.slice(0,2); //  "MM" or "M(v)"
-    schedule_M = schedule_MM.trim(); // "MM" or "M"
+    schedule_msg = real_msg.slice(2).trim(); //  "YMD(v)~~~~~~" 
+    schedule_YMD = schedule_msg.slice(0,6); //  "YYMMDD"
     schYear = schedule_YMD.slice(0,2); // "YY"
     schMonth = schedule_YMD.slice(2,4); //  "MM"
     schDate = schedule_YMD.slice(4,6); // "DD"
-    if (parseInt(schedule_M) < 13 && parseInt(schedule_M) > 0 && trimSchedule.length < 3) {
+    schedule_M = schedule_msg.slice(0,2).trim(); // "MM" or "M"
+    if (parseInt(schedule_M) < 13 && parseInt(schedule_M) > 0 && schedule_msg.length < 3) {
       searchSchedule(parseInt(schedule_M));
       replier.reply(scheduleList);
     } else if (schMonth > 0 && schDate > 0 && schMonth < 13 && schDate < 32) {
-      var schedule = trimSchedule.slice(6);
-      var real_schedule = schedule.trim();
-      DataBase.appendDataBase("scheduleInfo", ", \"" + now.getTime() + "\":[\"" + schYear + "\",\"" + schMonth + "\",\"" + schDate + "\",\"" + sender + "\",\"" + real_schedule + "\"]");
+      schedule = schedule_msg.slice(6).trim();
+      DataBase.appendDataBase("scheduleInfo", ", \"" + now.getTime() + "\":[\"" + schYear + "\",\"" + schMonth + "\",\"" + schDate + "\",\"" + sender + "\",\"" + schedule + "\"]");
       replier.reply("일정 등록 완료");
     } else {
       replier.reply("명령어를 확인해주세요.\n!달력 mm\n!달력 yymmdd <내용>");

@@ -10,26 +10,20 @@ const scriptName = "template";
  */
 var isLee = false;
 function response(room, msg, sender, isGroupChat, replier, imageDB, packageName) {
-  var asyncAfterMin = function (callbackFunction) {
-    setTimeout(function () {
-      callbackFunction();
-    }, 60000);
-  };
-
-  var changeFalse = function () {
-    isLee = false;
-  };
+  function timeOut(t) {
+    setTimeout(changeFalse = () => {
+      isBong = false;
+    }, t * 1000);
+  }
 
   if (sender == "이성영" && isLee == false) {
+    isLee = true;
     if (msg.includes("죽어")) {
-      isLee = true;
       replier.reply("어허! 형한테 그런 말 하는거 아니야");
-      asyncAfterMin(changeFalse);
     } else if (msg.includes("나가")) {
-      isLee = true;
       replier.reply("강봉권 나가");
-      asyncAfterMin(changeFalse);
     }
+    timeOut(60);
   }
 }
 
