@@ -8,35 +8,20 @@
 </head>
 <body>
   <script>
-  var scheduleStr = `"12345678":["21","05","17","이성영","강봉권바보"],"12345679":["21","10","21","강봉권","이성영바보"],"12345689":["21","05","17","김승수","둘 다 바보"]`
+    const room = "미새파";
+    const sender = "baebug";
+    const isGroupChat = true;
+    var msg = prompt('msg');
 
-  var now = new Date();
-  // var scheduleStr = DataBase.getDataBase("scheduleInfo.txt");
-  var strSchedule = "{" + scheduleStr + "}";
-  var scheduleObj = JSON.parse(strSchedule);
-  var schYY, schMM, scDD, schSender, schMsg;
-  var scheduleList = '';
-  var schedule_YMD, schedule_MM, schedule_M;
-  var schYear, schMonth, schDate;
-
-
-  function searchSchedule(m) {
-    scheduleList = m + "월 일정 안내";
-    for (key in scheduleObj) {
-      schYY = scheduleObj[key][0];
-      schMM = scheduleObj[key][1];
-      schDD = scheduleObj[key][2];
-      schSender = scheduleObj[key][3];
-      schMsg = scheduleObj[key][4];
-      if (schMM == m) {
-        scheduleList += '\n' + schDD + '일 ' + schMsg;
-      }
-    } return scheduleList;
-  }
-
-  console.log(searchSchedule(10));
+    response(msg);
+  
 
 
   </script>
+  <!-- <script type="text/javascript" src="msgFunc/certification.js"></script> -->
+  <script type="text/javascript" src="msgFunc/command.js"></script>
+  <!-- <script type="text/javascript" src="msgFunc/searching.js"></script> -->
+  <!-- <script type="text/javascript" src="msgFunc/shutupBong.js"></script> -->
+  <!-- <script type="text/javascript" src="msgFunc/shutupLee.js"></script> -->
 </body>
 </html>

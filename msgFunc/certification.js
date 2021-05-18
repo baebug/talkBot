@@ -1,4 +1,4 @@
-const scriptName = "template";
+// const scriptName = "template";
 /**
  * (string) room
  * (string) sender

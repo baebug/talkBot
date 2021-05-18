@@ -1,4 +1,4 @@
-const scriptName = "template";
+const scriptName = "command";
 /**
  * (string) room
  * (string) sender
