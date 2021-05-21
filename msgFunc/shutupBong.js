@@ -1,4 +1,4 @@
-// const scriptName = "shutupBong";
+const scriptName = "shutupBong";
 /**
  * (string) room
  * (string) sender

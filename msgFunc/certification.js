@@ -1,4 +1,4 @@
-// const scriptName = "template";
+const scriptName = "certification";
 /**
  * (string) room
  * (string) sender

@@ -1,4 +1,4 @@
-// const scriptName = "template";
+const scriptName = "searching";
 /**
  * (string) room
  * (string) sender

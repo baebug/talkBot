@@ -20,6 +20,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   var result = [], dustResult = [], numResult = [], upResult = [], downResult = [];
   var dustList = '';
   var rp = rand(299);
+  var react;
 
   function makeDate(){
     nYear = now.getFullYear();
@@ -72,6 +73,12 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     } else return false;
   }
 
+  function delay_response(ment) {
+    setTimeout(delayed = () => {
+      replier.reply(ment);
+    }, rand(5) * 1000);
+  }
+
   function dustName(d){
     var dData = rowData.select("div.text_info").get(d);
     dData = dData.select("span.figure_text");
@@ -105,7 +112,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
       } else if (real_msg === "봉권") {
         replier.reply("봉형 넘 멋져...(제발)");
       } else if (real_msg === "확률") {
-        replier.reply("ㄹㅇㅋㅋ (0.33%)\n아 ㄹㅇ? (0.33%)\nㅇㅈㅇㅈ (0.33%)\nㄴㄴ 아님 (0.33%)\n안물 (0.33%)\n(무시) (0.33%)\n\n<봉형 전용>\n강봉권 죽어 (0.01%)\n칭찬 3개 (각 3%)\n헛소리 ㄴ (90.99%)");
+        replier.reply("ㄹㅇㅋㅋ (0.33%)\n아 ㄹㅇ? (0.33%)\nㅇㅈㅇㅈ (0.33%)\nㄴㄴ 아님 (0.33%)\n안물 (0.33%)\n(무시) (0.33%)\n\n<봉형 전용>\n강봉권 죽어 (0.01%)\n칭찬 3개 (각 5%)\n헛소리 ㄴ (84.99%)");
       } else if (real_msg.startsWith("생일")) {
         var birth = real_msg.slice(2).trim();
         if (parseInt(birth) < 13 && parseInt(birth) > 0) {
@@ -161,22 +168,28 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
   } else {
     switch (rp) {
       case 13:
-        replier.reply("ㄹㅇㅋㅋ");
+        react = "ㄹㅇㅋㅋ";
+        delay_response(react);
         break;
       case 178:
-        replier.reply("아 ㄹㅇ?");
+        react = "아 ㄹㅇ?";
+        delay_response(react);
       break;
       case 234:
-        replier.reply("ㅇㅈㅇㅈ");
+        react = "ㅇㅈㅇㅈ";
+        delay_response(react);
       break;
       case 49:
-        replier.reply("ㄴㄴ 아님");
+        react = "ㄴㄴ 아님";
+        delay_response(react);
       break;
       case 193:
-        replier.reply("안물");
+        react = "안물";
+        delay_response(react);
       break;
       case 264:
-        replier.reply("(무시)");
+        react = "(무시)";
+        delay_response(react);
       break;
     }
   }
