@@ -108,7 +108,7 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
     var real_msg = msg.slice(1);
     if (!real_msg.startsWith("!")) {
       if (real_msg === "명령어") {
-        replier.reply("!이름\n!생일 n\n!봉권\n!날씨 지역\n!달력 n\n!달력 yymmdd <내용>\n#<명령어>\n!확률");
+        replier.reply("!봉권\n!생일 <월>\n!생일 <이름>\n!<지역>\n!달력 <월>\n!달력 yymmdd <내용>\n#<검색어>\n!확률");
       } else if (real_msg === "봉권") {
         replier.reply("봉형 넘 멋져...(제발)");
       } else if (real_msg === "확률") {
@@ -118,10 +118,19 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
         if (parseInt(birth) < 13 && parseInt(birth) > 0) {
           searchMonth(parseInt(birth));
           replier.reply(birthList);
-        } else replier.reply("!생일 n");
-      } else if (real_msg.startsWith("날씨")) {
+        } else {
+          for (key in birthObj) {
+            mName = birthObj[key].name;
+            mMonth = birthObj[key].info[0];
+            mDate = birthObj[key].info[1];
+            if (mName === birth) {
+              replier.reply(mMonth + '월 ' + mDate + '일');
+            }
+          }
+        }
+      } else {
         makeDate();
-        var w_location = real_msg.slice(2).trim();
+        var w_location = real_msg;
         var w_query = "https://m.search.naver.com/search.naver?query=" + w_location + "날씨";
         rowData = Utils.parse(w_query);
         if (isWeather() == true) {
@@ -153,16 +162,6 @@ function response(room, msg, sender, isGroupChat, replier, imageDB, packageName)
           dustList += "\n습도: " + dustResult + "(" + numResult + "%)";
           replier.reply(nYear + "년 " + nMonth + "월 " + nDate + "일 (" + nWeek + ")\n" + nHour + "시 " + nMin + "분 - " + w_location + "\n" + dustList + "\n\nhttps://m.mm\n" + w_query);
         } else replier.reply("검색 결과가 없습니다.");
-      } else {
-        var trimMsg = real_msg.trim();
-        for (key in birthObj) {
-          mName = birthObj[key].name;
-          mMonth = birthObj[key].info[0];
-          mDate = birthObj[key].info[1];
-          if (mName === trimMsg) {
-            replier.reply(mMonth + '월 ' + mDate + '일');
-          }
-        }
       }
     }
   } else {
