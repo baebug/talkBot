@@ -7,3 +7,5 @@ Android store에 올라와있는 `메신저봇R`을 가지고 놀며 Javascript�
 **누구에게나 유용하고 누구에게나 재미있는** 기능들을 많이 탑재하여  
 오픈소스로 공개하고 싶습니다!<br/>
 #### 화이팅!<br/><br/>
+
+[메신저봇R 개발자 블로그](https://violet.develope.kr/)
